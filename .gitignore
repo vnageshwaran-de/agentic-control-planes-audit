@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Audit kit run outputs (keep audit_data.csv tracked, ignore ad-hoc scoring runs)
+*.json
+!audit_data_template.json
+self-score.json

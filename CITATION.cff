@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+title: "agentic-control-planes-audit: Static security-posture audit of public Model Context Protocol (MCP) servers"
+message: "If you use this software, please cite both the software and the accompanying paper (see preferred-citation)."
+type: software
+authors:
+  - family-names: Nageshwaran
+    given-names: Vinoth
+    orcid: "https://orcid.org/0009-0004-0332-231X"
+    affiliation: "Business Insider, New York, NY, USA"
+    email: vnageshwaran@gmail.com
+  - family-names: Ezekiel
+    given-names: Soundararajan
+    affiliation: "Department of Computer Science, Indiana University of Pennsylvania, Indiana, PA, USA"
+    email: sezekiel@iup.edu
+repository-code: "https://github.com/vnageshwaran-de/agentic-control-planes-audit"
+url: "https://github.com/vnageshwaran-de/agentic-control-planes-audit"
+license: MIT
+version: 1.0.0
+date-released: 2026-05-06
+keywords:
+  - model-context-protocol
+  - mcp
+  - security-audit
+  - agentic-ai
+  - llm-agents
+  - llm-security
+  - reproducibility
+  - inter-rater-reliability
+  - cohens-kappa
+  - static-analysis
+preferred-citation:
+  type: article
+  title: "Agentic AI Control Planes: A Systematic Survey of Protocols, Security, Cloud-Native LLMOps, and Governance"
+  authors:
+    - family-names: Nageshwaran
+      given-names: Vinoth
+      orcid: "https://orcid.org/0009-0004-0332-231X"
+    - family-names: Ezekiel
+      given-names: Soundararajan
+  journal: "IEEE Open Journal of the Computer Society"
+  year: 2026
+  publisher:
+    name: "Institute of Electrical and Electronics Engineers"

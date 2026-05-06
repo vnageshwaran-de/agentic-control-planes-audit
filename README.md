@@ -1,0 +1,104 @@
+# agentic-control-planes-audit
+
+[![Tests](https://github.com/vnageshwaran-de/agentic-control-planes-audit/actions/workflows/test.yml/badge.svg)](https://github.com/vnageshwaran-de/agentic-control-planes-audit/actions/workflows/test.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
+
+Score any public Model Context Protocol (MCP) server against a six-dimension security-posture rubric. Companion artifact to the IEEE Open Journal of the Computer Society survey *Agentic AI Control Planes: A Systematic Survey of Protocols, Security, Cloud-Native LLMOps, and Governance* (Nageshwaran & Ezekiel, 2026).
+
+## What this repo is
+
+A reproducibility kit for the static security-posture audit reported in §VIII-E of the manuscript. It contains:
+
+- **`extract_signals.py`** — a deterministic regex-only Python tool that scores a GitHub repo's README on six dimensions, each mapped to one or more threats from the manuscript's threat catalog (T1–T17). Two raters running the script on the same repository at the same commit SHA produce byte-identical output.
+- **`methodology.md`** — full rubric, sampling frame, inclusion/exclusion criteria, threats to validity, **inter-rater reliability protocol** (Cohen's weighted κ with quadratic weights, target κ ≥ 0.7, three-rater dispute resolution), and version/release-management policy.
+- **`audit_data.csv`** — per-server scores from the N=24 pilot reported in the paper, with explicit per-dimension evidence and rationale columns.
+- **`aggregate_stats.md`** — per-dimension distributions, common-gap clusters, MCPCORPUS-scale framing.
+- **`sampling_log.md`** — exact list of repositories visited, with inclusions, exclusions, and reproducibility notes.
+
+## Why use it
+
+If you're building an MCP host, deploying a vendor MCP server, or reviewing a paper that touches MCP security, you can run this in seconds against any public MCP server and get a reproducible score against six threats from the §VI catalog. The rubric is intentionally narrow and inspectable — the whole regex set is in one Python file (lines 38–65 of `extract_signals.py`) and any refinement is tracked as a semantic-versioned release.
+
+## Quickstart
+
+```bash
+git clone https://github.com/vnageshwaran-de/agentic-control-planes-audit.git
+cd agentic-control-planes-audit
+pip install -r requirements.txt
+python3 extract_signals.py --repo https://github.com/grafana/mcp-grafana
+```
+
+Output is a JSON record with per-dimension 0/1/2 scores, the matched regex evidence per dimension, and the resolved default-branch HEAD SHA at fetch time.
+
+```json
+{
+  "repo": "https://github.com/grafana/mcp-grafana",
+  "commit_or_snapshot": "ab12cd34ef56",
+  "D1": 2, "D2": 1, "D3": 2, "D4": 2, "D5": 2, "D6": 1,
+  "evidence": { ... },
+  "total": 10
+}
+```
+
+You can also score a local checkout or a single README file:
+
+```bash
+python3 extract_signals.py --repo-dir ./checkouts/grafana_mcp_grafana
+python3 extract_signals.py --readme-file path/to/README.md --snapshot 2026-05-06
+```
+
+## The six dimensions
+
+| Dim | Name | §VI threats addressed |
+|----|------|----------------------|
+| D1 | Capability description integrity | T3 tool poisoning, T7 insecure tool discovery |
+| D2 | Authentication surface | T10 overprivileged service accounts, T11 identity abuse |
+| D3 | Side-effect declaration | T8 excessive agency, T9 overprivileged tools, T15 data exfiltration |
+| D4 | Allow-list and sandboxing posture | T6 MCP server compromise, T15 data exfiltration |
+| D5 | Audit and observability hooks | T16 observability gaps |
+| D6 | Versioning and supply-chain hygiene | T6 MCP server compromise (supply chain) |
+
+Each dimension is scored 0 (none), 1 (partial), or 2 (full). Total range 0–12. Scoring rules in `methodology.md` §D.
+
+## Pilot results (N=24)
+
+| Group | n | Mean total (out of 12) |
+|------|--:|----------------------:|
+| Reference servers (`modelcontextprotocol/servers`) | 7 | 3.00 |
+| Third-party / vendor servers | 17 | 6.47 |
+| **Overall** | **24** | **5.42** |
+
+**Headline finding:** 22 of 24 servers (91.7 %) score zero on D5 (audit/observability). Zero servers ship signed releases or SBOM/provenance artifacts (D6 ceiling). Full distributions and gap clusters in `aggregate_stats.md`.
+
+## Reproducing the audit
+
+The pilot is a single-rater scoring with regex-deterministic baseline. To execute the full inter-rater protocol on the same N=24 sample, follow `methodology.md` §F1:
+
+1. Two raters R1 and R2 score independently using the rubric in §D and the URLs in `sampling_log.md` §B.
+2. Compute Cohen's weighted κ with quadratic weights $w_{ij}=(i-j)^2$ over the {0, 1, 2} scale, per dimension. Target κ ≥ 0.7 per Landis & Koch (1977).
+3. For per-server score disagreements where |R1 − R2| ≥ 1, a third rater R3 adjudicates; the adjudicated score is the published value.
+4. Publish `audit_data.csv` (post-adjudication), `audit_data_rater1.csv`, `audit_data_rater2.csv`, and the κ table.
+
+## Citing
+
+If you use this kit, please cite both the paper and the release:
+
+> Nageshwaran, V. and Ezekiel, S. *Agentic AI Control Planes: A Systematic Survey of Protocols, Security, Cloud-Native LLMOps, and Governance*. IEEE Open Journal of the Computer Society, 2026.
+
+> Nageshwaran, V. and Ezekiel, S. *agentic-control-planes-audit (v1.0.0)*. GitHub, 2026. <https://github.com/vnageshwaran-de/agentic-control-planes-audit>
+
+A machine-readable citation is provided in `CITATION.cff`.
+
+## Versioning
+
+The rubric and the regex set are version-pinned to the release tag. The script emits its own version label in each record so a re-run with a newer release can be reconciled with the published baseline. Refinements (additional SBOM-format patterns, new OAuth flow names, etc.) ship as semantic-versioned releases.
+
+## License
+
+MIT — see [`LICENSE`](LICENSE).
+
+## Authors
+
+- **Vinoth Nageshwaran** — Data Engineer IV, Business Insider, New York, NY, USA. ORCID [0009-0004-0332-231X](https://orcid.org/0009-0004-0332-231X).
+- **Soundararajan Ezekiel** — Professor, Department of Computer Science, Indiana University of Pennsylvania, Indiana, PA, USA.
