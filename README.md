@@ -3,6 +3,7 @@
 [![Tests](https://github.com/vnageshwaran-de/agentic-control-planes-audit/actions/workflows/test.yml/badge.svg)](https://github.com/vnageshwaran-de/agentic-control-planes-audit/actions/workflows/test.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20102926.svg)](https://doi.org/10.5281/zenodo.20102926)
 
 Score any public Model Context Protocol (MCP) server against a six-dimension security-posture rubric. Companion artifact to the IEEE Open Journal of the Computer Society survey *Agentic AI Control Planes: A Systematic Survey of Protocols, Security, Cloud-Native LLMOps, and Governance* (Nageshwaran & Ezekiel, 2026).
 
@@ -88,7 +89,7 @@ If you use this kit, please cite both the paper and the release:
 
 > Nageshwaran, V. and Ezekiel, S. *Agentic AI Control Planes: A Systematic Survey of Protocols, Security, Cloud-Native LLMOps, and Governance*. IEEE Open Journal of the Computer Society, 2026.
 
-> Nageshwaran, V. and Ezekiel, S. *agentic-control-planes-audit (v1.1.0)*. GitHub, 2026. <https://github.com/vnageshwaran-de/agentic-control-planes-audit>
+> Nageshwaran, V. and Ezekiel, S. *agentic-control-planes-audit (v1.1.0)*. Zenodo, 2026. DOI [10.5281/zenodo.20102926](https://doi.org/10.5281/zenodo.20102926). Source: <https://github.com/vnageshwaran-de/agentic-control-planes-audit>.
 
 A machine-readable citation is provided in `CITATION.cff`.
 

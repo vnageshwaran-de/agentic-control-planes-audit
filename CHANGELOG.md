@@ -4,6 +4,8 @@ All notable changes to this project are documented in this file. The format foll
 
 ## [1.1.0] — 2026-05-10
 
+Archived on Zenodo: [10.5281/zenodo.20102926](https://doi.org/10.5281/zenodo.20102926).
+
 ### Added
 - `run_kappa.py` — Cohen's weighted κ_w (quadratic weights on the {0, 1, 2} scale) computed between R1 (the human pilot scorer recorded in `audit_data.csv`) and R2 (the deterministic `extract_signals.py` script). Outputs a per-dimension κ table, the joint frequency matrix per dimension, and the overall pooled κ_w.
 - `kappa_results.json` — full per-pair frequency matrices and per-dimension κ_w values, regenerable by `python3 run_kappa.py`.
