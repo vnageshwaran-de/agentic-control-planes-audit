@@ -77,6 +77,46 @@ with quadratic weights $w_{ij} = (i-j)^2$ over the three-level scale $\{0,1,2\}$
 
 In the form shipped with the manuscript, only Step 1 (R1) is complete. Steps 2--4 are released as a reproducibility commitment: any reviewer can request, and the journal can verify, the second-rater pass on the same sample using the same rubric and script. The script is deterministic so the R1-vs-tool agreement is by construction $\kappa_w = 1.0$ on the dimensions the tool decides; the human R2 audit then provides an independent check on the boundary calls.
 
+## F1.1. Tool-vs-Human κ_w on the N=24 Pilot (preliminary R2 substitute)
+
+The full inter-rater protocol of §F1 requires an independent second human rater (R2). Pending R2 execution we report a script-vs-human comparison: we treat the deterministic `extract_signals.py` regex output as a *substitute* R2 against the human R1 scores in `audit_data.csv`. The script-as-R2 is a stronger lower bound than no comparison at all and surfaces the specific dimensions where the regex is faithful to human judgment versus where refinement is needed before the script can substitute for a human rater. We computed Cohen's weighted $\kappa_w$ with quadratic weights on the {0, 1, 2} scale per dimension; the run script (`run_kappa.py`) and full per-pair joint frequency matrices are in `kappa_results.json`.
+
+| Dim | Name | $n$ | $P_o$ (raw agreement) | $\kappa_w$ | Reading (Landis & Koch 1977) |
+|---|---|---:|---:|---:|---|
+| D1 | Capability description integrity | 24 | 0.000 | **0.036** | Slight |
+| D2 | Authentication surface | 24 | 0.833 | **0.801** | Substantial |
+| D3 | Side-effect declaration | 24 | 0.625 | **0.727** | Substantial |
+| D4 | Allow-list / sandboxing posture | 24 | 0.458 | **0.375** | Fair |
+| D5 | Audit / observability hooks | 24 | 0.917 | **0.732** | Substantial |
+| D6 | Versioning / supply-chain hygiene | 24 | 0.208 | **0.026** | Slight |
+| — | **Pooled across all six** | 144 | 0.507 | **0.401** | Moderate |
+
+**Interpretation.**
+
+- **Three dimensions clear the substantial-agreement threshold ($\kappa_w \geq 0.7$):** D2 (auth), D3 (side-effect), and D5 (observability). For these dimensions the script is a defensible automated baseline that an independent human rater is most likely to agree with on the {0,1,2} call.
+- **Two dimensions show systematic R1 vs script divergence:** D1 (capability description integrity) and D6 (versioning/supply chain). The disagreement is not random; it is a regex-faithfulness issue:
+  - **D1:** the script's regex for "typed schema" looks for the literal strings `inputSchema`, `JSON schema`, `zod`, `pydantic`, etc. in the README. The human R1 credited MCP's standard-by-default typed input field even when the README did not name it, because every published MCP server exposes a typed surface by virtue of using the protocol. The script underscores; the human gives partial credit.
+  - **D6:** the script keys on the literal pattern `github.com/<owner>/<repo>/releases` appearing in the README text. The human R1 inspected the GitHub Releases tab directly. Repos that publish tagged releases without putting that exact URL in the README score 0 from the script and 1 from R1.
+- **One dimension is in the middle:** D4 (allow-list/sandboxing) at $\kappa_w = 0.375$. This is the dimension we explicitly flagged in §F as judgment-laden, and the moderate disagreement is consistent with that flag.
+
+**What this means for the rubric.**
+
+The script is a credible deterministic baseline for D2/D3/D5 *as currently implemented*. For D1, D4, and D6, the analysis below specifies what changes in the v1.1 release of `extract_signals.py`.
+
+1. **D6 — replace README-only regex with the GitHub Releases REST API.** The v1.0 check looks for the literal pattern `github.com/<owner>/<repo>/releases` in README text. The v1.1 check queries `/repos/<owner>/<repo>/releases` directly. Presence of any release with a non-prerelease tag scores 1; presence of a release whose assets include `*.sigstore`, `*.intoto.jsonl`, `*-cyclonedx.json`, or `*-spdx.json` (or whose release body references a signed-provenance attestation) scores 2.
+
+2. **D1 — redefine to measure capability-description *richness*, not schema presence.** A naive v1.1 fix would be to credit MCP's standard typed-input surface ("any conforming MCP server has `inputSchema` on every tool, so award D1 ≥ 1 by default"). On reflection this would make D1 non-discriminating: every server in the population scores ≥1 by definition and D1 stops doing useful work in the rubric. The v1.1 redefinition therefore raises the bar:
+   - **D1=0:** no schema beyond the protocol minimum; tools are described in free-text README only.
+   - **D1=1:** typed `inputSchema` on every tool *plus* per-parameter description text (i.e., the schema's `description` fields are populated, not empty).
+   - **D1=2:** D1=1 conditions satisfied *plus* either (a) per-tool risk-class annotation (read / write / send / transact / irreversible), or (b) signed/version-pinned schema metadata that a host can machine-check.
+   This preserves D1's discriminative power across the conforming-server population: the modal score becomes 1 (typed schema with descriptions); strong servers reach 2 (rich annotations); weak servers stay at 0 (free-text only).
+
+3. **D4 — leave as a judgment dimension; do not pretend the regex is authoritative.** Allow-list and sandboxing posture has too many vendor-specific manifestations (CLI flags, Helm values, environment variables, README prose) to fully automate at the {0,1,2} resolution. The v1.1 script will return a *recommendation* on D4 (the regex's best guess plus a confidence flag) rather than a score; the human rater retains final say. This is a deliberate design choice and is documented in the rubric.
+
+The v1.0 pilot scoring in `audit_data.csv` is left unchanged so the baseline this manuscript reports is reproducible. The v1.1 rescore will be published as an erratum with both R1 (human) and R2-script scores so a reader can see the effect of the regex refinement and the D1 redefinition end-to-end. The semantic-version bump (v1.0 → v1.1) flags that D1 changed meaning; v1.0 was "presence of schema" while v1.1 is "richness of capability description."
+
+**What this does NOT replace.** A human R2 is still needed to execute the full §F1 protocol. The numbers above quantify the agreement between the published rubric (as the script implements it) and the human R1 scoring. They do not quantify the agreement between two independent humans, which is what Cohen's $\kappa$ was designed to measure. The script-vs-human pooled $\kappa_w$ of 0.401 should be read as a *floor* — a true second human is likely to agree with R1 more closely than the regex does, particularly on D1 and D6 where domain knowledge fills regex gaps.
+
 ## F2. Automated Signal-Extraction Script
 
 The companion `extract_signals.py` (Python 3.8+, `requests` only) implements the rubric of §D as a pure deterministic function. Given a GitHub repository URL it emits a JSON record with: per-dimension 0/1/2 score, the matched regex evidence used to make each call, and the resolved default-branch HEAD SHA at fetch time.

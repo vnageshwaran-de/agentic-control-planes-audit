@@ -1,0 +1,408 @@
+{
+  "n_servers": 24,
+  "per_dimension": {
+    "D1": {
+      "kappa_w": 0.036,
+      "n": 24,
+      "po": 0.0,
+      "agreement_unweighted": 0.0,
+      "matrix": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          9,
+          0,
+          0
+        ],
+        [
+          12,
+          3,
+          0
+        ]
+      ]
+    },
+    "D2": {
+      "kappa_w": 0.801,
+      "n": 24,
+      "po": 0.833,
+      "agreement_unweighted": 0.833,
+      "matrix": [
+        [
+          7,
+          0,
+          0
+        ],
+        [
+          2,
+          5,
+          1
+        ],
+        [
+          1,
+          0,
+          8
+        ]
+      ]
+    },
+    "D3": {
+      "kappa_w": 0.727,
+      "n": 24,
+      "po": 0.625,
+      "agreement_unweighted": 0.625,
+      "matrix": [
+        [
+          7,
+          0,
+          0
+        ],
+        [
+          6,
+          3,
+          1
+        ],
+        [
+          0,
+          2,
+          5
+        ]
+      ]
+    },
+    "D4": {
+      "kappa_w": 0.375,
+      "n": 24,
+      "po": 0.458,
+      "agreement_unweighted": 0.458,
+      "matrix": [
+        [
+          8,
+          5,
+          0
+        ],
+        [
+          3,
+          2,
+          0
+        ],
+        [
+          1,
+          4,
+          1
+        ]
+      ]
+    },
+    "D5": {
+      "kappa_w": 0.732,
+      "n": 24,
+      "po": 0.917,
+      "agreement_unweighted": 0.917,
+      "matrix": [
+        [
+          20,
+          1,
+          1
+        ],
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          2
+        ]
+      ]
+    },
+    "D6": {
+      "kappa_w": 0.026,
+      "n": 24,
+      "po": 0.208,
+      "agreement_unweighted": 0.208,
+      "matrix": [
+        [
+          3,
+          0,
+          0
+        ],
+        [
+          19,
+          2,
+          0
+        ],
+        [
+          0,
+          0,
+          0
+        ]
+      ]
+    }
+  },
+  "overall_pooled": {
+    "kappa_w": 0.401,
+    "n": 144,
+    "po": 0.507,
+    "agreement_unweighted": 0.507,
+    "matrix": [
+      [
+        45,
+        6,
+        1
+      ],
+      [
+        39,
+        12,
+        2
+      ],
+      [
+        14,
+        9,
+        16
+      ]
+    ]
+  },
+  "r2_scores": [
+    {
+      "id": "R01",
+      "repo": "modelcontextprotocol/servers/src/filesystem",
+      "D1": 0,
+      "D2": 0,
+      "D3": 1,
+      "D4": 1,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "R02",
+      "repo": "modelcontextprotocol/servers/src/everything",
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "R03",
+      "repo": "modelcontextprotocol/servers/src/fetch",
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "R04",
+      "repo": "modelcontextprotocol/servers/src/git",
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "R05",
+      "repo": "modelcontextprotocol/servers/src/memory",
+      "D1": 0,
+      "D2": 0,
+      "D3": 1,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "R06",
+      "repo": "modelcontextprotocol/servers/src/sequentialthinking",
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "R07",
+      "repo": "modelcontextprotocol/servers/src/time",
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C01",
+      "repo": "github/github-mcp-server",
+      "D1": 0,
+      "D2": 2,
+      "D3": 2,
+      "D4": 1,
+      "D5": 2,
+      "D6": 0
+    },
+    {
+      "id": "C02",
+      "repo": "getsentry/sentry-mcp",
+      "D1": 0,
+      "D2": 2,
+      "D3": 0,
+      "D4": 1,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C03",
+      "repo": "cloudflare/mcp-server-cloudflare",
+      "D1": 0,
+      "D2": 0,
+      "D3": 0,
+      "D4": 1,
+      "D5": 1,
+      "D6": 0
+    },
+    {
+      "id": "C04",
+      "repo": "stripe/agent-toolkit",
+      "D1": 0,
+      "D2": 2,
+      "D3": 0,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C05",
+      "repo": "supabase-community/supabase-mcp",
+      "D1": 0,
+      "D2": 2,
+      "D3": 2,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C06",
+      "repo": "microsoft/playwright-mcp",
+      "D1": 0,
+      "D2": 0,
+      "D3": 1,
+      "D4": 2,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C07",
+      "repo": "makenotion/notion-mcp-server",
+      "D1": 0,
+      "D2": 2,
+      "D3": 1,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C08",
+      "repo": "elastic/mcp-server-elasticsearch",
+      "D1": 0,
+      "D2": 1,
+      "D3": 0,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C09",
+      "repo": "heroku/heroku-mcp-server",
+      "D1": 0,
+      "D2": 1,
+      "D3": 0,
+      "D4": 1,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C10",
+      "repo": "snowflake-labs/mcp",
+      "D1": 0,
+      "D2": 2,
+      "D3": 1,
+      "D4": 1,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C11",
+      "repo": "awslabs/mcp",
+      "D1": 1,
+      "D2": 0,
+      "D3": 2,
+      "D4": 1,
+      "D5": 2,
+      "D6": 0
+    },
+    {
+      "id": "C12",
+      "repo": "grafana/mcp-grafana",
+      "D1": 1,
+      "D2": 2,
+      "D3": 2,
+      "D4": 1,
+      "D5": 2,
+      "D6": 1
+    },
+    {
+      "id": "C13",
+      "repo": "membranehq/mcp-server",
+      "D1": 0,
+      "D2": 1,
+      "D3": 0,
+      "D4": 1,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C14",
+      "repo": "mongodb-js/mongodb-mcp-server",
+      "D1": 0,
+      "D2": 1,
+      "D3": 2,
+      "D4": 1,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C15",
+      "repo": "apify/actors-mcp-server",
+      "D1": 1,
+      "D2": 2,
+      "D3": 0,
+      "D4": 0,
+      "D5": 0,
+      "D6": 1
+    },
+    {
+      "id": "C16",
+      "repo": "ClickHouse/mcp-clickhouse",
+      "D1": 0,
+      "D2": 2,
+      "D3": 2,
+      "D4": 0,
+      "D5": 0,
+      "D6": 0
+    },
+    {
+      "id": "C17",
+      "repo": "brave/brave-search-mcp-server",
+      "D1": 0,
+      "D2": 1,
+      "D3": 0,
+      "D4": 1,
+      "D5": 0,
+      "D6": 0
+    }
+  ]
+}

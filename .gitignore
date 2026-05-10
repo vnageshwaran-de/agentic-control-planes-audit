@@ -24,4 +24,5 @@ Thumbs.db
 # Audit kit run outputs (keep audit_data.csv tracked, ignore ad-hoc scoring runs)
 *.json
 !audit_data_template.json
+!kappa_results.json
 self-score.json
