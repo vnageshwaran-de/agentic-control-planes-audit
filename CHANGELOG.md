@@ -2,6 +2,17 @@
 
 All notable changes to this project are documented in this file. The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and the project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] — 2026-11-20
+
+Second independent human rater (R2) codings and R1–R2 inter-rater reliability.
+
+### Added
+- `audit_data_R2.csv` — second independent human rater (R2) posture codings for all N=24 units on D1–D6 (inspected 2026-11-16), scored blind to R1 using only the rubric and each unit's published artifacts.
+- `kappa_interrater_results.json` — R1–R2 Cohen's weighted κ_w (quadratic weights) per dimension and pooled, raw agreement P_o, per-rater mean totals, and dimensions meeting the κ_w ≥ 0.7 target. D2=0.76, D3=0.73 meet target; pooled κ_w=0.36.
+
+### Notes
+- R1 inspected 2026-05-06, R2 inspected 2026-11-16; upstream per-repository snapshots were not retained, so part of the measured disagreement may reflect artifact drift (see the accompanying manuscript, §VIII-E).
+
 ## [1.1.0] — 2026-05-10
 
 Archived on Zenodo: [10.5281/zenodo.20102926](https://doi.org/10.5281/zenodo.20102926).
