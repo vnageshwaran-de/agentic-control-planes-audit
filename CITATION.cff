@@ -6,19 +6,29 @@ authors:
   - family-names: Nageshwaran
     given-names: Vinoth
     orcid: "https://orcid.org/0009-0004-0332-231X"
-    affiliation: "Business Insider, New York, NY, USA"
+    affiliation: "University of the Cumberlands, Williamsburg, KY 40769, USA"
     email: vnageshwaran@gmail.com
+  - family-names: Kumar
+    given-names: Vivek
+    affiliation: "Oracle Corporation, Austin, TX, USA"
+  - family-names: Saravanan
+    given-names: Harini
+    affiliation: "Boston University, Boston, MA, USA"
+  - family-names: Tran
+    given-names: Tin T.
+    affiliation: "Ton Duc Thang University, Ho Chi Minh City, Vietnam"
+    email: trantrungtin@tdtu.edu.vn
   - family-names: Ezekiel
     given-names: Soundararajan
     affiliation: "Department of Computer Science, Indiana University of Pennsylvania, Indiana, PA, USA"
     email: sezekiel2013@gmail.com
 repository-code: "https://github.com/vnageshwaran-de/agentic-control-planes-audit"
 url: "https://github.com/vnageshwaran-de/agentic-control-planes-audit"
-doi: "10.5281/zenodo.20102926"
+doi: "10.5281/zenodo.24424562"
 identifiers:
   - type: doi
-    value: 10.5281/zenodo.20102926
-    description: "Zenodo archive of v1.1.0"
+    value: 10.5281/zenodo.24424562
+    description: "Zenodo archive of v1.2.0"
 license: MIT
 version: 1.2.0
 date-released: 2026-11-20
@@ -35,11 +45,17 @@ keywords:
   - static-analysis
 preferred-citation:
   type: article
-  title: "Agentic AI Control Planes: A Systematic Survey of Protocols, Security, Cloud-Native LLMOps, and Governance"
+  title: "Agentic AI Control Planes: A Structured Survey of Protocols, Security, Cloud-Native LLMOps, and Governance"
   authors:
     - family-names: Nageshwaran
       given-names: Vinoth
       orcid: "https://orcid.org/0009-0004-0332-231X"
+    - family-names: Kumar
+      given-names: Vivek
+    - family-names: Saravanan
+      given-names: Harini
+    - family-names: Tran
+      given-names: Tin T.
     - family-names: Ezekiel
       given-names: Soundararajan
   journal: "IEEE Open Journal of the Computer Society"
