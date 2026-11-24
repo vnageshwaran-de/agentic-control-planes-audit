@@ -24,14 +24,17 @@ authors:
     email: sezekiel2013@gmail.com
 repository-code: "https://github.com/vnageshwaran-de/agentic-control-planes-audit"
 url: "https://github.com/vnageshwaran-de/agentic-control-planes-audit"
-doi: "10.5281/zenodo.24424562"
+doi: "10.5281/zenodo.20102925"
 identifiers:
+  - type: doi
+    value: 10.5281/zenodo.20102925
+    description: "Concept DOI (resolves to the latest version)"
   - type: doi
     value: 10.5281/zenodo.24424562
     description: "Zenodo archive of v1.2.0"
 license: MIT
-version: 1.2.0
-date-released: 2026-11-20
+version: 2.0.0
+date-released: 2026-11-24
 keywords:
   - model-context-protocol
   - mcp
@@ -42,6 +45,8 @@ keywords:
   - reproducibility
   - inter-rater-reliability
   - cohens-kappa
+  - gwet-ac2
+  - pinned-snapshots
   - static-analysis
 preferred-citation:
   type: article

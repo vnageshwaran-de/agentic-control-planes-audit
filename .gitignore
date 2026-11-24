@@ -26,3 +26,6 @@ Thumbs.db
 !audit_data_template.json
 !kappa_results.json
 self-score.json
+
+# Zenodo deposit metadata (tracked)
+!.zenodo.json

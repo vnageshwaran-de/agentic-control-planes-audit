@@ -1,0 +1,23 @@
+{
+  "title": "Agentic AI Control Planes: MCP Security-Posture Audit Kit (pinned, blind-rated re-run; rubric v2.0)",
+  "description": "<p>Supplementary audit kit for the survey <em>Agentic AI Control Planes: A Structured Survey of Protocols, Security, Cloud-Native LLMOps, and Governance</em> (Nageshwaran et al., IEEE Open Journal of the Computer Society, 2026). It contains the static security-posture audit of public Model Context Protocol (MCP) server implementations and, in <code>rerun_v2/</code>, the pinned, blind-rated, third-rater-adjudicated re-run that backs Section VIII: 24 units pinned to commit SHAs with archived snapshots (21 scoreable), the revised rubric v2.0 (six dimensions, NA code), the frozen evidence extractor, both blind raters' score sheets (R1', R2') and the third-rater adjudication, the monorepo-root supply-chain (D6) evidence at the pinned SHA, and the reproduction scripts that regenerate the merged grid, the reconciled posture grid, and the inter-rater reliability (weighted Cohen's kappa_w, Gwet's AC2, and unit-level cluster-bootstrap 95% confidence intervals). Pooled inter-rater reliability kappa_w = 0.68 (95% CI [0.57, 0.78]), Gwet's AC2 = 0.70. Released under MIT.</p>",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "version": "2.0.0",
+  "creators": [
+    {"name": "Nageshwaran, Vinoth", "affiliation": "University of the Cumberlands, Williamsburg, KY, USA", "orcid": "0009-0004-0332-231X"},
+    {"name": "Kumar, Vivek", "affiliation": "Oracle Corporation, Austin, TX, USA"},
+    {"name": "Saravanan, Harini", "affiliation": "Boston University, Boston, MA, USA"},
+    {"name": "Tran, Tin T.", "affiliation": "Ton Duc Thang University, Ho Chi Minh City, Vietnam"},
+    {"name": "Ezekiel, Soundararajan", "affiliation": "Indiana University of Pennsylvania, Indiana, PA, USA"}
+  ],
+  "keywords": [
+    "model-context-protocol", "mcp", "security-audit", "agentic-ai", "llm-agents",
+    "llm-security", "reproducibility", "inter-rater-reliability", "cohens-kappa",
+    "gwet-ac2", "pinned-snapshots", "static-analysis"
+  ],
+  "related_identifiers": [
+    {"identifier": "10.5281/zenodo.20102925", "relation": "isVersionOf", "scheme": "doi"}
+  ]
+}
